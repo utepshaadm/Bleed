@@ -27,7 +27,7 @@ class BLEED:
             self.j = (self.j + self.deck[self.j]) % 256
             k = nonce[i % len(nonce)]
             self.deck[self.j], self.deck[k] = self.deck[k], self.deck[self.j]
-        self.i = 0
+        self.c = 0
         self.j = 0
     
     def update(self):
