@@ -32,8 +32,8 @@ class BLEED:
     
     def update(self):
         self.j = (self.j + self.deck[self.c]) % 256
+        o = self.deck[(self.deck[self.deck[self.c]] + self.deck[self.j]) % 256]
         self.deck[self.j], self.deck[self.c] = self.deck[self.c], self.deck[self.j]
-        o = self.deck[self.deck[self.deck[(self.deck[self.deck[self.c]] + self.deck[self.j]) % 256]]]
         self.c = (self.c + 1) % 256
         return o
          
