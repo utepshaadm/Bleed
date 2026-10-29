@@ -32,9 +32,9 @@ class BLEED2:
     
     def update(self):
         self.j = (self.j + self.deck[self.c]) & 0xff
-        self.g = (self.g + self.deck[self.j]) % 0xff
+        self.g = (self.g + self.deck[self.j]) & 0xff
         self.deck[self.j], self.deck[self.c] = self.deck[self.c], self.deck[self.j]
-        return self.deck[self.j], self.deck[self.c] = self.deck[self.c], self.deck[self.j]
+        return self.deck[(self.deck[self.g] + self.deck[self.j]) & 0xff]
          
     def encrypt_byte(self, b):
         num = ord(b)
