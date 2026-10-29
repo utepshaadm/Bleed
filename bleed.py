@@ -19,12 +19,12 @@ class BLEED:
         self.j = 0
         self.c = 0
         for i in range(256):
-            self.j = (self.j + self.deck[self.j]) % 256
+            self.j = (self.j + self.deck[self.j] + self.c) % 256
             k = key[i % len(key)]
             self.deck[self.j], self.deck[k] = self.deck[k], self.deck[self.j]
             
         for i in range(256):
-            self.j = (self.j + self.deck[self.j]) % 256
+            self.j = (self.j + self.deck[self.j] + self.c) % 256
             k = nonce[i % len(nonce)]
             self.deck[self.j], self.deck[k] = self.deck[k], self.deck[self.j]
         self.c = 0
